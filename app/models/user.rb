@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :images, as: :imageable
+  has_many :memberships
+  has_many :groups, through: :memberships
 
   scope :old, -> { where('birthday <= ?', 18.years.ago) }
 
